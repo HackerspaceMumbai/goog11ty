@@ -2,6 +2,7 @@
 title: The Big Picture
 date: 2020-08-27
 description: Implementing Strategic Domain driven Design for Visage with EventStorming, Domain Storytelling, Core Charts, Bounded Context Canvas.
+image: /img/blog/post-1.jpg
 tags:
   - blog
 layout: layouts/post.njk

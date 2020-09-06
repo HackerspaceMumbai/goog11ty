@@ -17,9 +17,12 @@
   },
   "author": {
     "name": "Hackerspace Mumbai",
-    "twitterHandle": "@hackmum"
+    "twitterHandle": "hackmum"
   },
   "publisher": {
     "name": "Hackerspace Mumbai"
+  },
+  "image": {
+    "logo": "/img/logo/logo.jpg"
   }
 }
