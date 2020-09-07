@@ -25,6 +25,8 @@ const sizeOf = promisify(require("image-size"));
 const blurryPlaceholder = require("./blurry-placeholder");
 const srcset = require("./srcset");
 
+const ACTIVATE_AVIF = false;
+
 /**
  * Sets `width` and `height` on each image, adds blurry placeholder
  * and generates a srcset if none present.
@@ -51,22 +53,45 @@ const processImage = async (img) => {
         src
       )}")`
     );
-  }
-  if (!img.getAttribute("srcset")) {
-    img.setAttribute("srcset", await srcset(src));
-    img.setAttribute(
-      "sizes",
-      img.getAttribute("align")
-        ? "(max-width: 608px) 50vw, 187px"
-        : "(max-width: 608px) 100vw, 608px"
-    );
+    const doc = img.ownerDocument;
+    const picture = doc.createElement("picture");
+    const avif = doc.createElement("source");
+    const webp = doc.createElement("source");
+    const jpeg = doc.createElement("source");
+    if (ACTIVATE_AVIF) {
+      await setSrcset(avif, src, "avif");
+    }
+    avif.setAttribute("type", "image/avif");
+    await setSrcset(webp, src, "webp");
+    webp.setAttribute("type", "image/webp");
+    await setSrcset(jpeg, src, "jpeg");
+    jpeg.setAttribute("type", "image/jpeg");
+    if (ACTIVATE_AVIF) {
+      picture.appendChild(avif);
+    }
+    picture.appendChild(webp);
+    picture.appendChild(jpeg);
+    img.parentElement.replaceChild(picture, img);
+    picture.appendChild(img);
+  } else if (!img.getAttribute("srcset")) {
+    await setSrcset(img, src, "jpeg");
   }
 };
+
+async function setSrcset(img, src, format) {
+  img.setAttribute("srcset", await srcset(src, format));
+  img.setAttribute(
+    "sizes",
+    img.getAttribute("align")
+      ? "(max-width: 608px) 50vw, 187px"
+      : "(max-width: 608px) 100vw, 608px"
+  );
+}
 
 const dimImages = async (rawContent, outputPath) => {
   let content = rawContent;
 
-  if (outputPath.endsWith(".html")) {
+  if (outputPath && outputPath.endsWith(".html")) {
     const dom = new JSDOM(content);
     const images = [...dom.window.document.querySelectorAll("img,amp-img")];
 

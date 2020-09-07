@@ -8,7 +8,7 @@ Based on the awesome [eleventy-base-blog](https://github.com/11ty/eleventy-base-
 
 ## Demo
 
-* [Netlify Demo](https://eleventy-high-performance-blog-sample.industrialempathy.com/)
+- [Netlify Demo](https://eleventy-high-performance-blog-sample.industrialempathy.com/)
 
 ## Getting Started
 
@@ -35,11 +35,13 @@ npm install
 ```
 
 ### 5. Build, serve, watch and test
+
 ```
 npm run watch
 ```
 
 ### 6. Build and test
+
 ```
 npm run build
 ```
@@ -54,7 +56,7 @@ npm run build
 
 ```css
 :root {
-  --primary: #E7BF60;
+  --primary: #e7bf60;
   --primary-dark: #f9c412;
 }
 ```
@@ -73,13 +75,14 @@ npm run build
 
 #### Images
 
-- Immutable URLs.
-- Downloads remote images and stores/serves them locally.
 - Generates multiple sizes of each image and uses them in **`srcset`**.
 - Generates a **blurry placeholder** for each image (without adding an HTML element or using JS).
+- Transcodes images to [AVIF](<https://en.wikipedia.org/wiki/AV1#AV1_Image_File_Format_(AVIF)>) (currently off-by-default due to instabillity of the encoder) and [webp](https://developers.google.com/speed/webp) and generates `picture` element.
 - **Lazy loads** images (using [native `loading=lazy`](https://web.dev/native-lazy-loading/)).
 - **Async decodes** images (using `decoding=async`).
 - **Avoids CLS impact** of images by inferring and providing width and height (Supported in Chrome, Firefox and Safari 14+).
+- Downloads remote images and stores/serves them locally.
+- Immutable URLs.
 
 #### CSS
 
@@ -100,7 +103,6 @@ npm run build
 #### Fonts
 
 - Serves fonts from same origin.
-- Preloads fonts.
 - Makes fonts `display:swap`.
 
 #### Analytics
@@ -143,11 +145,6 @@ Generates a strong CSP for the base template.
 - Downloaded remote images, and generated sizes are cached in the local filesystem…
 - …and SHOULD be committed to git.
 - `.persistimages.sh` helps with this.
-
-### Opportunities (not-yet-implemented)
-
-- Transcode images to webp.
-- Transcode images to avif.
 
 ## Disclaimer
 
