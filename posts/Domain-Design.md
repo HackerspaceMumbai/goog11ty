@@ -83,7 +83,7 @@ Lastly, an app or a project does not exist in a vacuum, rather its invariably pa
 
 ![Impact Mapping](/img/blog/ImpactMapping_fin.png)
 
-> A journey of a thousand miles begins with a single step
+> "Make your vision so clear that your fears become irrelevant. - Unknown"
 
 You can follow the progress of this project on [Azure DevOps](https://bit.ly/2YHTZgq)
 
