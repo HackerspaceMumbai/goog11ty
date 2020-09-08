@@ -52,7 +52,7 @@ Based on a few design heuristics, "I spy" the nebulous contours of at least two 
 
 Thanks to the good folks at [WPS](https://github.com/WPS), who have provided a Domain Storytelling [Modeller](https://www.wps.de/modeler/) to make our lives much easier, we have a short 20 second video of the Visage "story".
 
-<iframe name="DomainStoryTelling" width="560" height="315" src="https://www.youtube.com/embed/5vXRYps9_n8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe name="DomainStoryTelling" width="100%" height="auto" src="https://www.youtube.com/embed/5vXRYps9_n8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 One of the heuristic that is associated with Domain StoryTelling is that uni-directional flows are usually indicative of bounded contexts. This was quite revealing for now it shows that they are definitely three distinct bounded contexts.
 
